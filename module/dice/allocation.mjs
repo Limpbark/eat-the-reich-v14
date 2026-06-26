@@ -342,7 +342,7 @@ export class DiceAllocation {
 		};
 		const chatTemplate =
 			"systems/eat-the-reich/templates/chat/die-pool-output.hbs";
-		const rollContent = await renderTemplate(chatTemplate, chatData);
+		const rollContent = await foundry.applications.handlebars.renderTemplate(chatTemplate, chatData);
 
 		// Render the flashback message content using the template
 		const flashbackTemplate =
@@ -353,7 +353,7 @@ export class DiceAllocation {
 			characterName: flashbackChoices.character,
 			description: flashbackChoices.description,
 		};
-		const flashbackFlavor = await renderTemplate(
+		const flashbackFlavor = await foundry.applications.handlebars.renderTemplate(
 			flashbackTemplate,
 			flashbackData
 		);

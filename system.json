@@ -4,9 +4,8 @@
 	"description": "The Eat the Reich system for FoundryVTT",
 	"version": "#{VERSION}#",
 	"compatibility": {
-		"minimum": 12,
-		"verified": 13.348,
-		"maximum": 13
+		"minimum": 14,
+		"verified": "14.360"
 	},
 	"authors": [
 		{
@@ -18,6 +17,10 @@
 		{
 			"name": "Nicoloye",
 			"url": "https://github.com/Nicoloye"
+		},
+		{
+			"name": "Limpbark",
+			"url": "https://github.com/Limpbark"
 		}
 	],
 	"documentTypes": {
@@ -116,7 +119,7 @@
 	"download": "#{DOWNLOAD}#",
 	"license": "LICENSE.txt",
 	"readme": "README.md",
-	"bugs": "https://github.com/philote/eat-the-reich/issues",
+	"bugs": "https://github.com/Limpbark/eat-the-reich-v14/issues",
 	"changelog": "CHANGELOG.md",
 	"primaryTokenAttribute": "blood",
 	"secondaryTokenAttribute": null,

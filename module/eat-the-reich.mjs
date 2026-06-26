@@ -30,29 +30,10 @@ globalThis.eat_the_reich = {
 };
 
 Hooks.on("renderChatLog", (chatLog, html, data) => {
-	const htmlElement = game.release.generation >= 13 ? html : html[0];
-	DiceAllocation.onRenderChatLog(chatLog, htmlElement, data);
+	DiceAllocation.onRenderChatLog(chatLog, html, data);
 });
 
-Hooks.on("renderChatMessage", (chatMessage, html, data) => {
-	if (game.release.generation >= 13) return;
-	// Apply styles for individual messages
-	DiceAllocation.onRenderChatMessage(chatMessage, html[0], data);
-	for (const dieElement of html[0].querySelectorAll(".roll.die.d6")) {
-		dieElement.addEventListener("click", DiceAllocation._handleDieClick);
-	}
-	for (const flashbackButton of html[0].querySelectorAll(".etr-flashback-btn")) {
-		flashbackButton.addEventListener(
-			"click",
-			DiceAllocation._handleFlashbackClick
-		);
-	}
-});
-
-// Only called in V13+
 Hooks.on("renderChatMessageHTML", (chatMessage, html, data) => {
-	if (game.release.generation <= 12) return;
-
 	DiceAllocation.onRenderChatMessage(chatMessage, html, data);
 
 	// Apply listeners for individual messages
@@ -93,7 +74,11 @@ Hooks.once("init", function () {
 		extraInfo: models.EatTheReichExtraInfo,
 	};
 
-	// Register sheet application classes
+	// Register sheet application classes.
+	// v13+ moved the document collections and the legacy sheet base classes
+	// into namespaces; reference them here so registration stays warning-free.
+	const { Actors, Items } = foundry.documents.collections;
+	const { ActorSheet, ItemSheet } = foundry.appv1.sheets;
 	Actors.unregisterSheet("core", ActorSheet);
 	Actors.registerSheet("eat-the-reich", applications.EatTheReichCharacterSheet, {
 		types: ["character"],
@@ -133,7 +118,7 @@ Hooks.on("renderSettings", (app, html) => {
 		{
 			action: (ev) => {
 				ev.preventDefault();
-				window.open("https://github.com/philote/eat-the-reich", "_blank");
+				window.open("https://github.com/Limpbark/eat-the-reich-v14", "_blank");
 			},
 			iconClasses: ["fab", "fa-github"],
 			labelKey: "ETR.Settings.game.github.title",
@@ -164,31 +149,14 @@ Hooks.on("renderSettings", (app, html) => {
 		return button;
 	});
 
-	// --- Version Specific Logic ---
-	if (game.release.generation >= 13) {
-		// V13+ Logic: Append to the "Documentation" section
-		const documentationSection = html.querySelector("section.documentation");
-		if (documentationSection) {
-			const divider = document.createElement("h4");
-			divider.classList.add("divider");
-			// Using a more specific key might be better, but reusing for now
-			divider.textContent = game.i18n.localize("ETR.Settings.game.heading");
+	// Append the buttons to the "Documentation" section of the Settings sidebar.
+	const documentationSection = html.querySelector("section.documentation");
+	if (documentationSection) {
+		const divider = document.createElement("h4");
+		divider.classList.add("divider");
+		divider.textContent = game.i18n.localize("ETR.Settings.game.heading");
 
-			// Append divider and then the buttons
-			documentationSection.append(divider, ...buttons);
-		}
-	} else {
-		// V12 Logic: Insert after the "Game Settings" section
-		const gameSettingsSection = html[0].querySelector("#settings-game");
-		if (gameSettingsSection) {
-			const header = document.createElement("h2");
-			header.innerText = game.i18n.localize("ETR.Settings.game.heading");
-
-			const etrSettingsDiv = document.createElement("div");
-			etrSettingsDiv.append(...buttons);
-
-			// Insert the header and the div containing buttons after the game settings section
-			gameSettingsSection.after(header, etrSettingsDiv);
-		}
+		// Append divider and then the buttons
+		documentationSection.append(divider, ...buttons);
 	}
 });

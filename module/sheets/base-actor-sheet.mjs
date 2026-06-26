@@ -144,7 +144,7 @@ export default class EatTheReichActorSheet extends api.HandlebarsApplicationMixi
 				dragover: this._onDragOver.bind(this),
 				drop: this._onDrop.bind(this),
 			};
-			return new DragDrop(d);
+			return new foundry.applications.ux.DragDrop.implementation(d);
 		});
 	}
 
@@ -169,7 +169,7 @@ export default class EatTheReichActorSheet extends api.HandlebarsApplicationMixi
 		const { img } =
 			this.document.constructor.getDefaultArtwork?.(this.document.toObject()) ??
 			{};
-		const fp = new FilePicker({
+		const fp = new foundry.applications.apps.FilePicker.implementation({
 			current,
 			type: "image",
 			redirectToRoot: img ? [img] : [],
@@ -334,7 +334,7 @@ export default class EatTheReichActorSheet extends api.HandlebarsApplicationMixi
 	 * @protected
 	 */
 	async _onDrop(event) {
-		const data = TextEditor.getDragEventData(event);
+		const data = foundry.applications.ux.TextEditor.implementation.getDragEventData(event);
 		const actor = this.actor;
 		const allowed = Hooks.call("dropActorSheetData", actor, this, data);
 		if (allowed === false) return;
@@ -442,7 +442,7 @@ export default class EatTheReichActorSheet extends api.HandlebarsApplicationMixi
 		}
 
 		// Perform the sort
-		const sortUpdates = SortingHelpers.performIntegerSort(item, {
+		const sortUpdates = foundry.utils.SortingHelpers.performIntegerSort(item, {
 			target,
 			siblings,
 		});

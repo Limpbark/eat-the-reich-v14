@@ -1,26 +1,25 @@
 # An EAT THE REICH System (Unofficial)
 <p align="center">
-   	<img src='https://raw.githubusercontent.com/philote/eat-the-reich/refs/heads/main/assets/ETR-compatible-with-logo.webp'/>
+   	<img src='https://raw.githubusercontent.com/Limpbark/eat-the-reich-v14/refs/heads/main/assets/ETR-compatible-with-logo.webp'/>
 </p>
 
 <p align="center">
-    <img alt="Foundry Version 12 support" src="https://img.shields.io/badge/Foundry-v12-informational">
-    <img alt="Foundry Version 13 support" src="https://img.shields.io/badge/Foundry-v13-informational">
-    <img alt="Latest Release Download Count" src="https://img.shields.io/github/downloads/philote/eat-the-reich/latest/total"> 
-    <img alt="GitHub release (latest by date)" src="https://img.shields.io/github/v/release/philote/eat-the-reich">
-    <img alt="GitHub last commit" src="https://img.shields.io/github/last-commit/philote/eat-the-reich">
-    <img alt="GitHub Release Date" src="https://img.shields.io/github/release-date/philote/eat-the-reich?label=latest%20release" /> 
+    <img alt="Foundry Version 14 support" src="https://img.shields.io/badge/Foundry-v14-informational">
+    <img alt="Latest Release Download Count" src="https://img.shields.io/github/downloads/Limpbark/eat-the-reich-v14/latest/total"> 
+    <img alt="GitHub release (latest by date)" src="https://img.shields.io/github/v/release/Limpbark/eat-the-reich-v14">
+    <img alt="GitHub last commit" src="https://img.shields.io/github/last-commit/Limpbark/eat-the-reich-v14">
+    <img alt="GitHub Release Date" src="https://img.shields.io/github/release-date/Limpbark/eat-the-reich-v14?label=latest%20release" /> 
 </p>
 <p align="center">
-    <!-- <img alt="GitHub" src="https://img.shields.io/github/license/philote/eat-the-reich">  -->
-    <a href="https://github.com/philote/eat-the-reich/issues">
-        <img alt="GitHub issues" src="https://img.shields.io/github/issues/philote/eat-the-reich">
+    <!-- <img alt="GitHub" src="https://img.shields.io/github/license/Limpbark/eat-the-reich-v14">  -->
+    <a href="https://github.com/Limpbark/eat-the-reich-v14/issues">
+        <img alt="GitHub issues" src="https://img.shields.io/github/issues/Limpbark/eat-the-reich-v14">
     </a> 
-    <a href="https://github.com/philote/eat-the-reich/network">
-        <img alt="GitHub forks" src="https://img.shields.io/github/forks/philote/eat-the-reich">
+    <a href="https://github.com/Limpbark/eat-the-reich-v14/network">
+        <img alt="GitHub forks" src="https://img.shields.io/github/forks/Limpbark/eat-the-reich-v14">
     </a> 
-    <a href="https://github.com/philote/eat-the-reich/stargazers">
-        <img alt="GitHub stars" src="https://img.shields.io/github/stars/philote/eat-the-reich">
+    <a href="https://github.com/Limpbark/eat-the-reich-v14/stargazers">
+        <img alt="GitHub stars" src="https://img.shields.io/github/stars/Limpbark/eat-the-reich-v14">
     </a>
 </p>
 <p align="center">
@@ -28,6 +27,9 @@
         <img height='36' style='border:0px;height:36px;' src='https://storage.ko-fi.com/cdn/kofi3.png?v=6' border='0' alt='Buy Me a Coffee at ko-fi.com' />
     </a>
 </p>
+
+> [!NOTE]
+> This is a community fork maintained by [Limpbark](https://github.com/Limpbark), updated for **Foundry VTT V14** (the codebase now targets minimum core version 14). It is based on the original [Eat the Reich system](https://github.com/philote/eat-the-reich) by Joseph Hopson (ephson). All credit for the original implementation goes to ephson and contributors.
 
 ### An Unofficial EAT THE REICH System for Foundry VTT
 EAT THE REICH is a chaotic, ultra-violet tabletop RPG where players take on the roles of vampiric commandos on a bloody mission to tear through Nazi-occupied France during World War II. Written by [Grant Howitt](https://bsky.app/profile/gshowitt.bsky.social) and illustrated by [Will Kirkby](https://bsky.app/profile/chamonkee.bsky.social), and published by [Rowan, Rook and Decard](https://rowanrookanddecard.com). The game blends pulpy action, dark humor, and horror as players use their supernatural abilities to slaughter Nazis and consume their blood. With fast-paced mechanics and a rebellious tone, EAT THE REICH delivers an over-the-top, cathartic power fantasy drenched in gore and irreverence.
@@ -48,7 +50,7 @@ If you’ve enjoyed my work and find value in what I create, please consider sup
 
 ## How to Install
 You can install the latest released version of the system by using this manifest link in Foundry VTT. [Instructions](https://foundryvtt.com/article/tutorial/): 
-https://github.com/philote/eat-the-reich/releases/latest/download/system.json
+https://github.com/Limpbark/eat-the-reich-v14/releases/latest/download/system.json
 
 ## Features
 - Character Sheet
