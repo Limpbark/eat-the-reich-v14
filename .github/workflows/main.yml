@@ -69,7 +69,7 @@ jobs:
 
     steps:
       - name: Checkout Repository
-        uses: actions/checkout@v5
+        uses: actions/checkout@v7
 
 
       # The manifest is hosted on raw.githubusercontent.com (see system.json's
