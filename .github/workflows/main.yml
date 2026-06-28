@@ -72,34 +72,25 @@ jobs:
         uses: actions/checkout@v5
 
 
-      # Extract version embedded in the tag.
-      # This step expects the tag to be one of the following formats:
-      #   - "v<major>.<minor>.<patch>" (e.g., "v1.2.3")
-      #   - "<major>.<minor>.<patch>"  (e.g., "1.2.3")
+      # The manifest is hosted on raw.githubusercontent.com (see system.json's
+      # "manifest" field) to avoid Foundry issue #9861, where the installer's
+      # short manifest-fetch timeout trips on the multi-hop redirect of
+      # releases/latest/download/... URLs through GitHub's release-assets CDN.
       #
-      # The version will be used by later steps to fill in the value for the
-      # "version" key required for a valid system manifest.
-      - name: Extract Version From Tag
-        id: get_version
-        uses: battila7/get-version-action@v2
-
-
-      # Modify "system.json" with values specific to the release.
-      # Since the values for the "version" and "url" keys aren't known ahead of
-      # time, the manifest file in the repository is updated with these values.
-      #
-      # While this does modify the manifest file in-place, the changes are not
-      # commited to the repository, and only exist in the action's filesystem.
-      - name: Modify System Manifest With Release-Specific Values
-        id: sub_manifest_link_version
-        uses: cschleiden/replace-tokens@v1
-        with:
-          files: 'system.json'
-        env:
-          VERSION: ${{steps.get_version.outputs.version-without-v}}
-          URL: ${{ env.project_url }}
-          MANIFEST: ${{ env.latest_manifest_url }}
-          DOWNLOAD: ${{ env.release_system_url }}
+      # Because of that, system.json is the canonical manifest and must already
+      # contain the correct "version" and "download" values BEFORE tagging.
+      # This step guards against a tag/manifest mismatch instead of rewriting
+      # the file in place at release time.
+      - name: Verify manifest version matches release tag
+        run: |
+          TAG="${{ github.event.release.tag_name }}"
+          TAG="${TAG#v}"
+          MANIFEST_VERSION="$(node -p "require('./system.json').version")"
+          echo "Release tag: $TAG | system.json version: $MANIFEST_VERSION"
+          if [ "$TAG" != "$MANIFEST_VERSION" ]; then
+            echo "::error::system.json version ($MANIFEST_VERSION) does not match release tag ($TAG). Bump system.json (version + download URL) and commit before tagging."
+            exit 1
+          fi
 
       # `npm ci` is recommended:
       # https://docs.github.com/en/actions/automating-builds-and-tests/building-and-testing-nodejs

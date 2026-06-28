@@ -50,7 +50,10 @@ If you’ve enjoyed my work and find value in what I create, please consider sup
 
 ## How to Install
 You can install the latest released version of the system by using this manifest link in Foundry VTT. [Instructions](https://foundryvtt.com/article/tutorial/): 
-https://github.com/Limpbark/eat-the-reich-v14/releases/latest/download/system.json
+https://raw.githubusercontent.com/Limpbark/eat-the-reich-v14/main/system.json
+
+> [!NOTE]
+> The manifest is served from `raw.githubusercontent.com` rather than the usual `releases/latest/download/system.json` link. This avoids [Foundry issue #9861](https://github.com/foundryvtt/foundryvtt/issues/9861), where the installer's short manifest-fetch timeout trips on the multi-hop redirect that GitHub release-asset URLs take through its CDN.
 
 ## Features
 - Character Sheet

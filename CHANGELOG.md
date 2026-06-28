@@ -2,6 +2,15 @@
 
 All notable changes to this Foundry VTT system are documented here.
 
+## [2.1.1] - 2026-06-28
+
+### Fixed
+- **Install/update reliability (Foundry [#9861](https://github.com/foundryvtt/foundryvtt/issues/9861)).** The manifest is now hosted at `https://raw.githubusercontent.com/Limpbark/eat-the-reich-v14/main/system.json` instead of the `releases/latest/download/system.json` redirect, which Foundry's short manifest-fetch timeout could not resolve through GitHub's release-assets CDN.
+
+### Changed
+- `system.json` is now the canonical, self-contained manifest: `version`, `url`, `manifest`, and `download` hold literal values instead of CI-replaced `#{...}#` tokens. Update these (version + download tag) before tagging a release.
+- Release workflow no longer rewrites `system.json` at build time; it now verifies the committed manifest version matches the release tag and fails the build on a mismatch.
+
 ## [2.1.0] - 2026-06-26
 
 Community fork maintained by [Limpbark](https://github.com/Limpbark), updated for **Foundry VTT V14**.

@@ -2,7 +2,7 @@
 	"id": "eat-the-reich",
 	"title": "Eat the Reich",
 	"description": "The Eat the Reich system for FoundryVTT",
-	"version": "#{VERSION}#",
+	"version": "2.1.1",
 	"compatibility": {
 		"minimum": 14,
 		"verified": "14.360"
@@ -114,9 +114,9 @@
 		}
 	],
 	"packFolders": [],
-	"url": "#{URL}#",
-	"manifest": "#{MANIFEST}#",
-	"download": "#{DOWNLOAD}#",
+	"url": "https://github.com/Limpbark/eat-the-reich-v14",
+	"manifest": "https://raw.githubusercontent.com/Limpbark/eat-the-reich-v14/main/system.json",
+	"download": "https://github.com/Limpbark/eat-the-reich-v14/releases/download/2.1.1/system.zip",
 	"license": "LICENSE.txt",
 	"readme": "README.md",
 	"bugs": "https://github.com/Limpbark/eat-the-reich-v14/issues",
